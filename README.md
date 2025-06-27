@@ -1,130 +1,110 @@
 # IntelliDent
 Intellident is an intelligent dental imaging analysis system designed to assist dentists in diagnosing root canal issues through automated interpretation of dental X-rays using artificial intelligence. This project aims to improve diagnostic accuracy, reduce time, and provide dental practitioners with decision support for endodontic treatments.
 # 🦷 AI Dental Radiograph Analysis
-### 🧠 Automated Detection of Root Canal Treatment from Dental X-rays Using Machine Learning
+### 🧠 Automated Detection of Root Canal Treatment Using Machine Learning
 
 ---
 
-## 📝 Overview
+## 📌 Project Overview
 
-This project applies **Machine Learning** techniques to classify dental radiograph images and determine whether a **Root Canal Treatment (RCT)** is present or not.
+This project focuses on leveraging **Machine Learning (ML)** to automate the classification of dental radiograph images and identify whether a **Root Canal Treatment (RCT)** is present or not.
 
-The objective is to create an automated tool that can assist dentists by analyzing X-ray images and predicting the presence of root canals — reducing diagnostic time and increasing accuracy.
-
----
-
-## 🦷 What is Root Canal Treatment?
-
-Root Canal Treatment is a procedure to remove infection from inside a tooth. Dentists typically use **radiographs (X-ray images)** to:
-
-- Detect decayed or infected pulp
-- Assess the extent of infection
-- Plan or confirm treatment
-
-Manual interpretation of these radiographs can be **error-prone** due to subtle image differences, lighting conditions, or clinician fatigue.
+Radiographs are the primary diagnostic tool in endodontics, but manual interpretation can be error-prone, subjective, and time-consuming. This work proposes an ML-based approach to improve the accuracy and efficiency of RCT detection.
 
 ---
 
-## ❗ Problem This Project Solves
+## 🦷 Background
 
-- Radiographic analysis requires expertise and can vary among practitioners.
-- Misinterpretation can lead to unnecessary or missed treatments.
-- Automating this classification helps improve **reliability, speed**, and **objectivity** in dental diagnostics.
-
----
-
-## 🤖 Why Use Machine Learning?
-
-ML allows us to:
-- **Learn from thousands of labeled X-ray images**
-- **Extract hidden patterns** from image pixels
-- **Classify new images accurately** with minimal delay
+- **Root Canal Treatment (RCT)** is used to treat infected tooth pulp.
+- Dental X-rays (radiographs) are used to determine if RCT is needed or has been performed.
+- Misinterpretation of radiographs can lead to incorrect diagnosis or treatment.
+- There's a growing need for **AI-assisted dental diagnosis tools** to enhance clinical decision-making.
 
 ---
 
-## 🎯 Project Objective
+## 🎯 Objective
 
-To develop and evaluate ML models that can accurately classify dental X-ray images into:
-- **RCT Present**
-- **No RCT**
+To build and evaluate machine learning models that can **automatically classify dental X-ray images** into:
+- ✅ **RCT Present**
+- ❌ **No RCT**
 
-Using image-based feature extraction and supervised learning techniques, this project builds models that predict the presence of root canals with high confidence.
+The goal is to reduce diagnostic subjectivity and provide dentists with reliable second opinions through AI.
 
 ---
 
-## 📦 Dataset
+## 🧾 Dataset
 
-- **Source**: Curated set of labeled dental radiographs
+- **Source**: [Kaggle Dental Radiography Dataset](https://www.kaggle.com/datasets/imtkaggleteam/dental-radiography)
+- **Content**:
+  - 1500+ high-quality dental radiograph images
+  - Balanced binary labels: `RCT` and `NoRCT`
 - **Preprocessing**:
-  - Image resizing to uniform dimensions
   - Grayscale conversion
-  - Normalization and flattening to feature vectors
-- **Labels**: 
-  - `RCT` – Root Canal Present
-  - `NoRCT` – No Root Canal
+  - Resizing to 64×64
+  - Normalization
+  - Flattening for model compatibility
 
 ---
 
-## ⚙️ Project Workflow
+## ⚙️ Methodology
 
-1. **Image Loading & Visualization**
-   - Sample display of dental X-rays with labels
+### 🔹 1. Data Preparation
+- Image loading using OpenCV
+- Label assignment based on folder names
+- Data splitting (Training 80%, Testing 20%)
 
-2. **Preprocessing**
-   - Resizing, grayscale normalization, pixel flattening
+### 🔹 2. Model Building
+- Models evaluated:
+  - Logistic Regression
+  - Support Vector Machine (SVM)
+  - Random Forest
+  - K-Nearest Neighbors (KNN)
 
-3. **Model Training**
-   - Models used:
-     - Logistic Regression
-     - Random Forest Classifier
-     - Support Vector Machine (SVM)
-     - K-Nearest Neighbors (KNN)
-   - Train-test split with performance comparison
-
-4. **Model Evaluation**
-   - Accuracy
-   - Precision, Recall, F1-Score
-   - Confusion Matrix
-   - ROC Curve
-
----
-
-## 🧪 Results
-
-| Model                 | Accuracy | Comments                      |
-|----------------------|----------|-------------------------------|
-| Logistic Regression  | 94%+     | Fast and interpretable        |
-| Random Forest        | 96%+     | Strong generalization         |
-| SVM                  | 97%+     | Best performance (linear kernel) |
-| KNN                  | ~90%     | Sensitive to data scaling     |
-
-ROC-AUC curves confirm that **SVM** and **Random Forest** models are highly effective for this task.
+### 🔹 3. Evaluation Metrics
+- Accuracy
+- Confusion Matrix
+- Classification Report
+- ROC-AUC Score
+- Visualizations: Training curves, prediction samples
 
 ---
 
-## 🔚 Conclusion
+## 📊 Results Summary
 
-This project demonstrates that **AI-driven models can effectively classify dental X-rays** to identify root canal treatments. It shows potential as a decision-support tool for dental practitioners.
+| Model                 | Accuracy | Notable Points                         |
+|----------------------|----------|----------------------------------------|
+| Logistic Regression  | ~94%     | Simple, interpretable baseline         |
+| Random Forest        | ~96%     | Good generalization, high precision    |
+| SVM (Linear Kernel)  | ~97%     | Best performer, robust to noise        |
+| KNN                  | ~90%     | Sensitive to image scale and distance  |
 
----
-
-## 🚀 Future Enhancements
-
-- Use **Convolutional Neural Networks (CNNs)** for end-to-end raw image classification
-- Train with larger and more diverse datasets
-- Integrate with real-time dental imaging systems
-- Build a GUI for dentists to upload and analyze images easily
+> The SVM model achieved the highest accuracy and best overall performance.
 
 ---
 
-## 📁 Repository Structure
+## ✅ Key Takeaways
+
+- ML models can effectively classify dental radiographs with minimal preprocessing.
+- SVM and Random Forest were the most robust classifiers.
+- High classification performance demonstrates potential for real-world clinical use.
+
+---
+
+## 🔬 Future Work
+
+- Implement **Convolutional Neural Networks (CNNs)** for raw image learning
+- Deploy a lightweight mobile/web app for real-time inference
+- Expand to multi-class dental conditions: fillings, implants, cavities
+
+---
+
+## 📁 Project Structure
 
 📦 AI_Dental_Analysis
 
-┣ 📜 AI_Dental_Analysis (Project Folder)
+┣ 📜 AI_Dental_Analysis.ipynb ← Core notebook with full analysis
 
-┣ 📄 README.md ← Project documentation (this file)
-
+┣ 📄 README.md ← This documentation
 
 
 
